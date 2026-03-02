@@ -26,7 +26,7 @@ function mainLoop() {
     ctx.fillStyle = "#87CEEB";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    cameraX = actor.x - 100;
+    cameraX = actor.x - 150;
     if(cameraX < 0) cameraX = 0;
 
     ctx.save();
@@ -38,7 +38,6 @@ function mainLoop() {
     
     CollisionHandler.check(actor, ground);
 
-    // Coin Collection
     ground.coins.forEach(c => {
         if (!c.collected && 
             actor.x < c.x + 20 && actor.x + actor.w > c.x - 20 &&
@@ -49,7 +48,6 @@ function mainLoop() {
         }
     });
 
-    // Portal logic
     if (score >= 30) ground.portal.active = true;
 
     if (ground.portal.active &&
@@ -57,13 +55,13 @@ function mainLoop() {
         actor.x + actor.w > ground.portal.x &&
         actor.y < ground.portal.y + ground.portal.h &&
         actor.y + actor.h > ground.portal.y) {
-        alert("Level 2 Coming Soon!");
+        alert("Level 1 Complete! Portal to Level 2 active.");
         location.reload();
     }
     
     ctx.restore();
 
-    if (actor.y > canvas.height + 50) {
+    if (actor.y > canvas.height + 100) {
         isGameOver = true;
         document.getElementById("gameOver").style.display = "block";
     }
