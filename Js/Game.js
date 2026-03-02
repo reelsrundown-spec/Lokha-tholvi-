@@ -40,8 +40,8 @@ function mainLoop() {
 
     ground.coins.forEach(c => {
         if (!c.collected && 
-            actor.x < c.x + 20 && actor.x + actor.w > c.x - 20 &&
-            actor.y < c.y + 20 && actor.y + actor.h > c.y - 20) {
+            actor.x < c.x + 30 && actor.x + actor.w > c.x - 30 &&
+            actor.y < c.y + 30 && actor.y + actor.h > c.y - 30) {
             c.collected = true;
             score += 10;
             document.getElementById("scoreVal").innerText = score;
@@ -55,7 +55,7 @@ function mainLoop() {
         actor.x + actor.w > ground.portal.x &&
         actor.y < ground.portal.y + ground.portal.h &&
         actor.y + actor.h > ground.portal.y) {
-        alert("Level 1 Complete! Portal to Level 2 active.");
+        alert("Level 1 Clear! Jumping to Level 2...");
         location.reload();
     }
     
