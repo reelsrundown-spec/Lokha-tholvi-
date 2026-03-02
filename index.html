@@ -5,17 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ninja Adventure</title>
     <style>
-        body { margin: 0; padding: 0; overflow: hidden; background: #87CEEB; width: 100vw; height: 100vh; }
-        @media screen and (orientation: portrait) {
-            body { transform: rotate(90deg); transform-origin: left top; width: 100vh; height: 100vw; position: absolute; top: 0; left: 100%; }
+        body { 
+            margin: 0; 
+            padding: 0; 
+            overflow: hidden; 
+            background: #87CEEB; 
+            width: 100vw; 
+            height: 100vh; 
         }
-        canvas { display: block; width: 100%; height: 100%; }
-        .controls { position: absolute; bottom: 15px; width: 100%; display: flex; justify-content: space-between; padding: 0 30px; box-sizing: border-box; z-index: 10; }
-        button { width: 70px; height: 70px; border-radius: 50%; border: 3px solid #fff; background: rgba(0,0,0,0.5); color: white; font-weight: bold; touch-action: manipulation; }
+        @media screen and (orientation: portrait) {
+            body { 
+                transform: rotate(90deg); 
+                transform-origin: left top; 
+                width: 100vh; 
+                height: 100vw; 
+                position: absolute; 
+                top: 0; 
+                left: 100%; 
+            }
+        }
+        canvas { 
+            display: block; 
+            width: 100%; 
+            height: 100%; 
+        }
+        .controls { 
+            position: absolute; 
+            bottom: 15px; 
+            width: 100%; 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 0 30px; 
+            box-sizing: border-box; 
+            z-index: 10; 
+        }
+        button { 
+            width: 70px; 
+            height: 70px; 
+            border-radius: 50%; 
+            border: 3px solid #fff; 
+            background: rgba(0,0,0,0.5); 
+            color: white; 
+            font-weight: bold; 
+            touch-action: manipulation; 
+        }
     </style>
 </head>
 <body>
+
     <canvas id="gameCanvas"></canvas>
+
     <div class="controls">
         <div style="display: flex; gap: 20px;">
             <button id="lBtn">LEFT</button>
@@ -23,9 +62,11 @@
         </div>
         <button id="jBtn" style="background:#3498db;">JUMP</button>
     </div>
+
     <script src="Js/TileGround.js"></script>
     <script src="Js/Actor.js"></script>
     <script src="Js/CollisionHandler.js"></script>
     <script src="Js/Game.js"></script>
+
 </body>
 </html>
