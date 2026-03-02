@@ -2,16 +2,16 @@ class TileGround {
     constructor(ctx) {
         this.ctx = ctx;
         this.platforms = [
-            { x: 0, y: 350, w: 1000, h: 200 },
-            { x: 1100, y: 250, w: 400, h: 40 },
-            { x: 1600, y: 150, w: 400, h: 40 },
-            { x: 2100, y: 350, w: 2000, h: 200 }
+            { x: 0, y: 350, w: 1200, h: 250 },
+            { x: 1300, y: 250, w: 400, h: 40 },
+            { x: 1800, y: 150, w: 400, h: 40 },
+            { x: 2300, y: 350, w: 2500, h: 250 }
         ];
         this.coins = [];
-        for(let i=0; i<8; i++) {
+        for(let i=0; i<10; i++) {
             this.coins.push({ x: 500 + (i * 400), y: 250, collected: false });
         }
-        this.portal = { x: 3800, y: 230, w: 80, h: 120, active: false };
+        this.portal = { x: 4500, y: 230, w: 80, h: 120, active: false };
     }
 
     draw() {
@@ -34,6 +34,9 @@ class TileGround {
         if (this.portal.active) {
             this.ctx.fillStyle = "purple";
             this.ctx.fillRect(this.portal.x, this.portal.y, this.portal.w, this.portal.h);
+            this.ctx.strokeStyle = "cyan";
+            this.ctx.lineWidth = 4;
+            this.ctx.strokeRect(this.portal.x, this.portal.y, this.portal.w, this.portal.h);
         }
     }
 }
