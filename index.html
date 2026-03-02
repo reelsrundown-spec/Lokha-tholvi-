@@ -4,47 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ഓടെടാ മോനേ ഓട്</title>
-    
-    <link rel="icon" type="image/gif" href="Images/player_run.gif">
-    <link rel="apple-touch-icon" href="Images/player_run.gif">
     <link rel="manifest" href="manifest.json">
-    <meta name="mobile-web-app-capable" content="yes">
-
     <style>
-        body { margin: 0; padding: 0; overflow: hidden; background: #87CEEB; font-family: sans-serif; width: 100vw; height: 100vh; }
-        canvas { display: block; width: 100%; height: 100%; }
+        body { margin: 0; overflow: hidden; background: #87CEEB; font-family: sans-serif; }
+        canvas { display: block; width: 100vw; height: 100vh; }
+        #gameTitle { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); color: white; font-size: 20px; z-index: 5; background: rgba(0,0,0,0.2); padding: 5px 15px; border-radius: 20px; }
+        .controls { position: absolute; bottom: 20px; width: 100%; display: flex; justify-content: space-between; padding: 0 40px; box-sizing: border-box; z-index: 10; }
+        button { width: 70px; height: 70px; border-radius: 50%; border: 2px solid white; background: rgba(0,0,0,0.5); color: white; font-weight: bold; }
         
-        @media screen and (orientation: portrait) {
-            body::after {
-                content: "ഫോൺ ചരിച്ചു പിടിക്കൂ (Rotate for Landscape)";
-                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                background: #000; color: #fff; display: flex;
-                align-items: center; justify-content: center; z-index: 999;
-            }
+        /* Game Over & Win Screens */
+        #gameOver, #gameWin { 
+            display: none; position: absolute; top: 50%; left: 50%; 
+            transform: translate(-50%, -50%); text-align: center; 
+            background: rgba(0,0,0,0.9); color: white; padding: 40px; 
+            border-radius: 20px; z-index: 100; width: 300px;
         }
-
-        #gameTitle {
-            position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-            background: rgba(0,0,0,0.3); color: white; padding: 5px 20px;
-            border-radius: 20px; font-size: 22px; font-weight: bold; z-index: 5;
-        }
-
-        #scoreBoard { position: absolute; top: 15px; right: 20px; color: white; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 10px; z-index: 10; }
-        
-        .controls { position: absolute; bottom: 20px; width: 100%; display: flex; justify-content: space-between; padding: 0 50px; box-sizing: border-box; z-index: 10; }
-        button { width: 75px; height: 75px; border-radius: 50%; border: 3px solid white; background: rgba(0,0,0,0.5); color: white; font-weight: bold; font-size: 14px; }
-        
-        #gameOver { display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.9); color: white; padding: 30px; border-radius: 15px; text-align: center; z-index: 100; }
+        .msg-btn { margin-top: 20px; padding: 10px 30px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; }
     </style>
 </head>
 <body>
     <div id="gameTitle">ഓടെടാ മോനേ ഓട്</div>
-    <div id="scoreBoard">Score: <span id="scoreVal">0</span></div>
-    <div id="gameOver">
-        <h1>നീ തോറ്റു!</h1>
-        <button onclick="location.reload()" style="width: auto; height: auto; padding: 10px 30px; border-radius: 8px;">Retry</button>
-    </div>
+    <div id="scoreBoard" style="position: absolute; top: 20px; right: 20px; color: white; z-index: 10;">Score: <span id="scoreVal">0</span></div>
+    
     <canvas id="gameCanvas"></canvas>
+
+    <div id="gameOver">
+        <h1 style="font-size: 40px;">ഊമ്പിക്കോ</h1>
+        <button class="msg-btn" onclick="location.reload()">Retry</button>
+    </div>
+
+    <div id="gameWin">
+        <h1 style="font-size: 40px;">നീ ജയിച്ചു</h1>
+        <button class="msg-btn" style="background: #2ecc71;" onclick="location.reload()">Next Level</button>
+    </div>
+
     <div class="controls">
         <div style="display: flex; gap: 20px;">
             <button id="lBtn">LEFT</button>
@@ -52,6 +45,7 @@
         </div>
         <button id="jBtn" style="background: #3498db;">JUMP</button>
     </div>
+
     <script src="Js/TileGround.js"></script>
     <script src="Js/Actor.js"></script>
     <script src="Js/CollisionHandler.js"></script>
