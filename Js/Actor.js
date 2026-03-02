@@ -2,12 +2,12 @@ class Actor {
     constructor(ctx) {
         this.ctx = ctx;
         this.img = new Image();
-        // Exact path to your animated GIF for running effect
-        this.img.src = "Images/1ae75336c051202a09eb2c841c588a20.gif"; 
-        this.x = 100;
-        this.y = 100;
-        this.w = 80;
-        this.h = 80;
+        // Exact filename you uploaded to GitHub
+        this.img.src = "Images/GreenCharacter.png"; 
+        this.x = 100; // Starting position on ground
+        this.y = 150;
+        this.w = 70;  // Adjusted width
+        this.h = 90;  // Adjusted height to match image aspect ratio
         this.dx = 0;
         this.dy = 0;
         this.dir = 1;
@@ -30,7 +30,7 @@ class Actor {
         this.x += this.dx;
         this.y += this.dy;
 
-        // Screen boundaries to keep the character visible
+        // Prevent going off-screen
         if (this.x < 0) this.x = 0;
     }
 }
