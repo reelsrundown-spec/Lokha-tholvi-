@@ -16,16 +16,8 @@
 </head>
 <body>
     <canvas id="gameCanvas"></canvas>
-    <div class="controls">
-        <div style="display: flex; gap: 20px;">
-            <button id="lBtn">LEFT</button>
-            <button id="rBtn">RIGHT</button>
-        </div>
-        <button id="jBtn" style="background:#3498db;">JUMP</button>
+    <div id="gameOver" style="display:none; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); text-align:center; background:rgba(0,0,0,0.8); color:white; padding:20px; border-radius:15px; z-index:100;">
+    <h1 style="margin:0; font-size:40px;">നീ തോറ്റു!</h1>
+    <button onclick="location.reload()" style="margin-top:20px; padding:10px 30px; font-size:20px; background:#e74c3c; color:white; border:none; border-radius:5px; cursor:pointer;">Retry</button>
     </div>
-    <script src="Js/TileGround.js"></script>
-    <script src="Js/Actor.js"></script>
-    <script src="Js/CollisionHandler.js"></script>
-    <script src="Js/Game.js"></script>
-</body>
-</html>
+    
