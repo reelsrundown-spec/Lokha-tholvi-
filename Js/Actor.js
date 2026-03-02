@@ -1,13 +1,16 @@
 class Actor {
     constructor(ctx) {
         this.ctx = ctx;
-        this.img = new Image();
-        // Exact filename you uploaded to GitHub
-        this.img.src = "Images/GreenCharacter.png"; 
-        this.x = 100; // Starting position on ground
+        this.video = document.createElement('video');
+        this.video.src = "Images/Herorunner.MP4";
+        this.video.muted = true;
+        this.video.loop = true;
+        this.video.play();
+
+        this.x = 100;
         this.y = 150;
-        this.w = 70;  // Adjusted width
-        this.h = 90;  // Adjusted height to match image aspect ratio
+        this.w = 100; // Adjusted for video size
+        this.h = 100;
         this.dx = 0;
         this.dy = 0;
         this.dir = 1;
@@ -18,19 +21,18 @@ class Actor {
         this.ctx.save();
         if (this.dir === -1) {
             this.ctx.scale(-1, 1);
-            this.ctx.drawImage(this.img, -this.x - this.w, this.y, this.w, this.h);
+            this.ctx.drawImage(this.video, -this.x - this.w, this.y, this.w, this.h);
         } else {
-            this.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+            this.ctx.drawImage(this.video, this.x, this.y, this.w, this.h);
         }
         this.ctx.restore();
     }
 
     update() {
-        this.dy += 0.8; // Gravity physics
+        this.dy += 0.8;
         this.x += this.dx;
         this.y += this.dy;
 
-        // Prevent going off-screen
         if (this.x < 0) this.x = 0;
     }
 }
