@@ -15,37 +15,37 @@ window.addEventListener('orientationchange', resizeCanvas);
 resizeCanvas();
 
 const ground = new TileGround(ctx);
-const ninja = new Actor(ctx);
-let cameraX = 0; // To follow the ninja
+const actor = new Actor(ctx);
+let cameraX = 0;
 
 function mainLoop() {
-    // Sky background color
+    // Background Sky
     ctx.fillStyle = "#87CEEB";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Camera logic to follow ninja
-    cameraX = ninja.x - 100;
+    // Camera follow logic
+    cameraX = actor.x - 100;
     if(cameraX < 0) cameraX = 0;
 
     ctx.save();
-    ctx.translate(-cameraX, 0); // Move the world
+    ctx.translate(-cameraX, 0); // Scroll the level
     
     ground.draw();
-    ninja.draw();
-    ninja.update();
+    actor.draw();
+    actor.update();
     
-    CollisionHandler.check(ninja, ground);
+    CollisionHandler.check(actor, ground);
     
     ctx.restore();
     
     requestAnimationFrame(mainLoop);
 }
 
-// Touch Controls
-document.getElementById("lBtn").ontouchstart = () => { ninja.dx = -8; ninja.dir = -1; };
-document.getElementById("rBtn").ontouchstart = () => { ninja.dx = 8; ninja.dir = 1; };
-document.getElementById("lBtn").ontouchend = () => ninja.dx = 0;
-document.getElementById("rBtn").ontouchend = () => ninja.dx = 0;
-document.getElementById("jBtn").ontouchstart = () => { if(ninja.onGround) ninja.dy = -18; };
+// Controls using IDs from index.html
+document.getElementById("lBtn").ontouchstart = () => { actor.dx = -8; actor.dir = -1; };
+document.getElementById("rBtn").ontouchstart = () => { actor.dx = 8; actor.dir = 1; };
+document.getElementById("lBtn").ontouchend = () => actor.dx = 0;
+document.getElementById("rBtn").ontouchend = () => actor.dx = 0;
+document.getElementById("jBtn").ontouchstart = () => { if(actor.onGround) actor.dy = -18; };
 
 mainLoop();
