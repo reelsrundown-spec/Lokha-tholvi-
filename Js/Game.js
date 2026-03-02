@@ -18,6 +18,7 @@ const ground = new TileGround(ctx);
 const actor = new Actor(ctx);
 let cameraX = 0;
 let isGameOver = false;
+let score = 0;
 
 function mainLoop() {
     if (isGameOver) return;
@@ -36,6 +37,17 @@ function mainLoop() {
     actor.update();
     
     CollisionHandler.check(actor, ground);
+
+    // Coin collection logic
+    ground.coins.forEach(c => {
+        if (!c.collected && 
+            actor.x < c.x + 20 && actor.x + actor.w > c.x - 20 &&
+            actor.y < c.y + 20 && actor.y + actor.h > c.y - 20) {
+            c.collected = true;
+            score += 10;
+            document.getElementById("scoreVal").innerText = score;
+        }
+    });
     
     ctx.restore();
 
