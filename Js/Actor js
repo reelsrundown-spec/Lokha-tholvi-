@@ -3,7 +3,7 @@ class Actor {
         this.ctx = ctx;
         this.img = new Image();
         // Path to the GIF you just uploaded
-        this.img.src = "Images/1ae75336c051202a09eb2c841c588a20.gif"; 
+        this.img.src = "Images/1ae75336c051202a09eb2c841c588a20.gif";
         this.x = 80; this.y = 300; this.w = 80; this.h = 80;
         this.dx = 0; this.dy = 0; this.dir = 1;
         this.onGround = false;
