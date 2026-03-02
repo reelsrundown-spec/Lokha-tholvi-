@@ -17,18 +17,19 @@ resizeCanvas();
 const ground = new TileGround(ctx);
 const actor = new Actor(ctx);
 let cameraX = 0;
+let isGameOver = false;
 
 function mainLoop() {
-    // Background Sky
+    if (isGameOver) return;
+
     ctx.fillStyle = "#87CEEB";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Camera follow logic
     cameraX = actor.x - 100;
     if(cameraX < 0) cameraX = 0;
 
     ctx.save();
-    ctx.translate(-cameraX, 0); // Scroll the level
+    ctx.translate(-cameraX, 0);
     
     ground.draw();
     actor.draw();
@@ -37,11 +38,15 @@ function mainLoop() {
     CollisionHandler.check(actor, ground);
     
     ctx.restore();
+
+    if (actor.y > canvas.height + 50) {
+        isGameOver = true;
+        document.getElementById("gameOver").style.display = "block";
+    }
     
     requestAnimationFrame(mainLoop);
 }
 
-// Controls using IDs from index.html
 document.getElementById("lBtn").ontouchstart = () => { actor.dx = -8; actor.dir = -1; };
 document.getElementById("rBtn").ontouchstart = () => { actor.dx = 8; actor.dir = 1; };
 document.getElementById("lBtn").ontouchend = () => actor.dx = 0;
