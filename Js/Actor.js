@@ -2,11 +2,12 @@ class Actor {
     constructor(ctx) {
         this.ctx = ctx;
         this.img = new Image();
-        this.img.src = "Images/1ae75336c051202a09eb2c841c588a20.gif";
-        this.x = 50;  // Starting X position
-        this.y = 50;  // Starting Y position (above the platform)
-        this.w = 60;
-        this.h = 60;
+        // Use the exact filename from your Images folder
+        this.img.src = "Images/1ae75336c051202a09eb2c841c588a20.gif"; 
+        this.x = 50;
+        this.y = 50; // Start above ground
+        this.w = 70; // Adjusted size for the new character
+        this.h = 90;
         this.dx = 0;
         this.dy = 0;
         this.dir = 1;
@@ -25,11 +26,10 @@ class Actor {
     }
 
     update() {
-        this.dy += 0.8; // Gravity effect
+        this.dy += 0.8; // Gravity physics
         this.x += this.dx;
         this.y += this.dy;
-
-        // Prevent ninja from going off the left side of the screen
+        
         if (this.x < 0) this.x = 0;
     }
 }
