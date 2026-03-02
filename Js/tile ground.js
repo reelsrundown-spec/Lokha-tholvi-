@@ -1,18 +1,19 @@
 class TileGround {
     constructor(ctx) {
         this.ctx = ctx;
-        // Platform layout inspired by the mountain adventure image
+        // Basic platforms for the level
         this.platforms = [
-            { x: 0, y: 500, w: 400, h: 200 },    // Starting Ground
-            { x: 500, y: 350, w: 250, h: 40 },   // Floating middle platform
-            { x: 850, y: 250, w: 400, h: 500 }   // Goal platform
+            { x: 0, y: 500, w: 600, h: 200 },    // Starting Floor
+            { x: 700, y: 350, w: 300, h: 40 },   // Middle Floating Platform
+            { x: 1100, y: 450, w: 500, h: 300 }  // End Platform
         ];
     }
+
     draw() {
         this.platforms.forEach(p => {
-            this.ctx.fillStyle = "#5d4037"; // Brown dirt
+            this.ctx.fillStyle = "#5d4037"; // Soil color
             this.ctx.fillRect(p.x, p.y, p.w, p.h);
-            this.ctx.fillStyle = "#4caf50"; // Green grass top
+            this.ctx.fillStyle = "#4caf50"; // Grass color top
             this.ctx.fillRect(p.x, p.y, p.w, 15);
         });
     }
