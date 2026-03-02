@@ -38,7 +38,7 @@ function mainLoop() {
     
     CollisionHandler.check(actor, ground);
 
-    // Coin collection logic
+    // Coin Collection
     ground.coins.forEach(c => {
         if (!c.collected && 
             actor.x < c.x + 20 && actor.x + actor.w > c.x - 20 &&
@@ -48,6 +48,18 @@ function mainLoop() {
             document.getElementById("scoreVal").innerText = score;
         }
     });
+
+    // Portal logic
+    if (score >= 30) ground.portal.active = true;
+
+    if (ground.portal.active &&
+        actor.x < ground.portal.x + ground.portal.w &&
+        actor.x + actor.w > ground.portal.x &&
+        actor.y < ground.portal.y + ground.portal.h &&
+        actor.y + actor.h > ground.portal.y) {
+        alert("Level 2 Coming Soon!");
+        location.reload();
+    }
     
     ctx.restore();
 
