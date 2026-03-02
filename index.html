@@ -5,82 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ഓടെടാ മോനേ ഓട്</title>
     
+    <link rel="icon" type="image/gif" href="Images/player_run.gif">
     <link rel="apple-touch-icon" href="Images/player_run.gif">
-    <meta name="apple-mobile-web-app-title" content="ഓടെടാ മോനേ ഓട്">
+    <link rel="manifest" href="manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
 
     <style>
-        body { 
-            margin: 0; padding: 0; overflow: hidden; background: #87CEEB; 
-            width: 100vw; height: 100vh; font-family: 'Arial', sans-serif;
-        }
-        
+        body { margin: 0; padding: 0; overflow: hidden; background: #87CEEB; font-family: sans-serif; width: 100vw; height: 100vh; }
         canvas { display: block; width: 100%; height: 100%; }
+        
+        @media screen and (orientation: portrait) {
+            body::after {
+                content: "ഫോൺ ചരിച്ചു പിടിക്കൂ (Rotate for Landscape)";
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: #000; color: #fff; display: flex;
+                align-items: center; justify-content: center; z-index: 999;
+            }
+        }
 
-        /* Game Title at the top */
         #gameTitle {
-            position: absolute; top: 10px; left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.2);
-            padding: 5px 20px; border-radius: 20px;
-            color: #fff; font-size: 24px; font-weight: bold;
-            text-shadow: 2px 2px 4px #000; z-index: 5;
+            position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.3); color: white; padding: 5px 20px;
+            border-radius: 20px; font-size: 22px; font-weight: bold; z-index: 5;
         }
 
-        #scoreBoard {
-            position: absolute; top: 20px; right: 20px;
-            background: rgba(0,0,0,0.5); color: white;
-            padding: 10px 20px; border-radius: 10px;
-            font-size: 20px; z-index: 10;
-        }
-
-        #gameOver { 
-            display: none; position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%); text-align: center;
-            background: rgba(0,0,0,0.8); color: white;
-            padding: 30px; border-radius: 15px; z-index: 100;
-        }
-
-        .controls { 
-            position: absolute; bottom: 15px; width: 100%;
-            display: flex; justify-content: space-between;
-            padding: 0 30px; box-sizing: border-box; z-index: 10;
-        }
-
-        button { 
-            width: 70px; height: 70px; border-radius: 50%;
-            border: 3px solid #fff; background: rgba(0,0,0,0.5);
-            color: white; font-weight: bold; touch-action: manipulation;
-        }
+        #scoreBoard { position: absolute; top: 15px; right: 20px; color: white; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 10px; z-index: 10; }
+        
+        .controls { position: absolute; bottom: 20px; width: 100%; display: flex; justify-content: space-between; padding: 0 50px; box-sizing: border-box; z-index: 10; }
+        button { width: 75px; height: 75px; border-radius: 50%; border: 3px solid white; background: rgba(0,0,0,0.5); color: white; font-weight: bold; font-size: 14px; }
+        
+        #gameOver { display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.9); color: white; padding: 30px; border-radius: 15px; text-align: center; z-index: 100; }
     </style>
 </head>
 <body>
-
     <div id="gameTitle">ഓടെടാ മോനേ ഓട്</div>
-
-    <canvas id="gameCanvas"></canvas>
-
-    <div id="scoreBoard">
-        Score: <span id="scoreVal">0</span>
-    </div>
-
+    <div id="scoreBoard">Score: <span id="scoreVal">0</span></div>
     <div id="gameOver">
-        <h1 style="margin:0; font-size:40px;">നീ തോറ്റു!</h1>
-        <button onclick="location.reload()" style="margin-top:20px; padding:10px 30px; font-size:20px; background:#e74c3c; color:white; border:none; border-radius:5px;">Retry</button>
+        <h1>നീ തോറ്റു!</h1>
+        <button onclick="location.reload()" style="width: auto; height: auto; padding: 10px 30px; border-radius: 8px;">Retry</button>
     </div>
-
+    <canvas id="gameCanvas"></canvas>
     <div class="controls">
         <div style="display: flex; gap: 20px;">
             <button id="lBtn">LEFT</button>
             <button id="rBtn">RIGHT</button>
         </div>
-        <button id="jBtn" style="background:#3498db;">JUMP</button>
+        <button id="jBtn" style="background: #3498db;">JUMP</button>
     </div>
-
     <script src="Js/TileGround.js"></script>
     <script src="Js/Actor.js"></script>
     <script src="Js/CollisionHandler.js"></script>
     <script src="Js/Game.js"></script>
-
 </body>
 </html>
