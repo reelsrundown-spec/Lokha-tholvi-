@@ -2,7 +2,6 @@ class Actor {
     constructor(ctx) {
         this.ctx = ctx;
         this.img = new Image();
-        // Updated filename as per your request
         this.img.src = "Images/Player_run.gif"; 
         this.x = 100;
         this.y = 100;
@@ -29,7 +28,6 @@ class Actor {
         this.dy += 0.8;
         this.x += this.dx;
         this.y += this.dy;
-
         if (this.x < 0) this.x = 0;
     }
 }
