@@ -1,20 +1,17 @@
 class TileGround {
     constructor(ctx) {
         this.ctx = ctx;
-        // Extended level 1 floor
         this.platforms = [
             { x: 0, y: 300, w: 600, h: 200 },
             { x: 700, y: 220, w: 300, h: 30 },
             { x: 1100, y: 150, w: 300, h: 30 },
-            { x: 1500, y: 300, w: 1000, h: 200 } // Long end floor
+            { x: 1500, y: 300, w: 1200, h: 200 }
         ];
-        // 30 coins total (10 points each)
         this.coins = [];
         for(let i=0; i<6; i++) {
-            this.coins.push({ x: 200 + (i*300), y: 250, collected: false });
+            this.coins.push({ x: 300 + (i * 400), y: 200, collected: false });
         }
-        // Portal at the end of level 1
-        this.portal = { x: 2300, y: 200, w: 60, h: 100, active: false };
+        this.portal = { x: 2500, y: 200, w: 60, h: 100, active: false };
     }
 
     draw() {
@@ -34,12 +31,9 @@ class TileGround {
             }
         });
 
-        // Draw Portal if score is 30 or more
         if (this.portal.active) {
             this.ctx.fillStyle = "purple";
             this.ctx.fillRect(this.portal.x, this.portal.y, this.portal.w, this.portal.h);
-            this.ctx.strokeStyle = "white";
-            this.ctx.strokeRect(this.portal.x, this.portal.y, this.portal.w, this.portal.h);
         }
     }
 }
