@@ -16,11 +16,19 @@ resizeCanvas();
 
 const ground = new TileGround(ctx);
 const ninja = new Actor(ctx);
+let cameraX = 0; // To follow the ninja
 
 function mainLoop() {
-    // Clear and fill background
+    // Sky background color
     ctx.fillStyle = "#87CEEB";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Camera logic to follow ninja
+    cameraX = ninja.x - 100;
+    if(cameraX < 0) cameraX = 0;
+
+    ctx.save();
+    ctx.translate(-cameraX, 0); // Move the world
     
     ground.draw();
     ninja.draw();
@@ -28,9 +36,12 @@ function mainLoop() {
     
     CollisionHandler.check(ninja, ground);
     
+    ctx.restore();
+    
     requestAnimationFrame(mainLoop);
 }
 
+// Touch Controls
 document.getElementById("lBtn").ontouchstart = () => { ninja.dx = -8; ninja.dir = -1; };
 document.getElementById("rBtn").ontouchstart = () => { ninja.dx = 8; ninja.dir = 1; };
 document.getElementById("lBtn").ontouchend = () => ninja.dx = 0;
