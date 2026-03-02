@@ -1,0 +1,9 @@
+{
+  "name": "ഓടെടാ മോനേ ഓട്",
+  "short_name": "ഓടെടാ",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#87CEEB",
+  "theme_color": "#87CEEB",
+  "icons": [{ "src": "Images/player_run.gif", "sizes": "192x192", "type": "image/gif" }]
+}
