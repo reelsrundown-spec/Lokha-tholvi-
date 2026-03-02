@@ -9,7 +9,7 @@ class TileGround {
         ];
         this.coins = [];
         for(let i=0; i<8; i++) {
-            this.coins.push({ x: 400 + (i * 450), y: 250, collected: false });
+            this.coins.push({ x: 500 + (i * 400), y: 250, collected: false });
         }
         this.portal = { x: 3800, y: 230, w: 80, h: 120, active: false };
     }
@@ -34,9 +34,6 @@ class TileGround {
         if (this.portal.active) {
             this.ctx.fillStyle = "purple";
             this.ctx.fillRect(this.portal.x, this.portal.y, this.portal.w, this.portal.h);
-            this.ctx.strokeStyle = "cyan";
-            this.ctx.lineWidth = 5;
-            this.ctx.strokeRect(this.portal.x, this.portal.y, this.portal.w, this.portal.h);
         }
     }
 }
