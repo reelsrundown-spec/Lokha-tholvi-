@@ -2,12 +2,12 @@ class Actor {
     constructor(ctx) {
         this.ctx = ctx;
         this.img = new Image();
-        // Use the exact filename from your Images folder
+        // Exact path to your animated GIF for running effect
         this.img.src = "Images/1ae75336c051202a09eb2c841c588a20.gif"; 
-        this.x = 50;
-        this.y = 50; // Start above ground
-        this.w = 70; // Adjusted size for the new character
-        this.h = 90;
+        this.x = 100;
+        this.y = 100;
+        this.w = 80;
+        this.h = 80;
         this.dx = 0;
         this.dy = 0;
         this.dir = 1;
@@ -29,7 +29,8 @@ class Actor {
         this.dy += 0.8; // Gravity physics
         this.x += this.dx;
         this.y += this.dy;
-        
+
+        // Screen boundaries to keep the character visible
         if (this.x < 0) this.x = 0;
     }
 }
