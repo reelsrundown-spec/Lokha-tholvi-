@@ -2,18 +2,16 @@ class Actor {
     constructor(ctx) {
         this.ctx = ctx;
         this.img = new Image();
-        // Path to your ninja gif
-        this.img.src = "Images/1ae75336c051202a09eb2c841c588a20.gif"; 
-        this.x = 100;
-        this.y = 200;
-        this.w = 80;
-        this.h = 80;
+        this.img.src = "Images/1ae75336c051202a09eb2c841c588a20.gif";
+        this.x = 50;
+        this.y = 100;
+        this.w = 60;
+        this.h = 60;
         this.dx = 0;
         this.dy = 0;
         this.dir = 1;
         this.onGround = false;
     }
-
     draw() {
         this.ctx.save();
         if (this.dir === -1) {
@@ -24,13 +22,10 @@ class Actor {
         }
         this.ctx.restore();
     }
-
     update() {
-        this.dy += 0.8; // Gravity physics
+        this.dy += 0.8;
         this.x += this.dx;
         this.y += this.dy;
-        
-        // Screen bounds to keep ninja visible
         if (this.x < 0) this.x = 0;
     }
 }
