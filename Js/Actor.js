@@ -5,8 +5,8 @@ class Actor {
         this.img.src = "Images/player_run.gif"; 
         this.x = 100;
         this.y = 100;
-        this.w = 80;
-        this.h = 100;
+        this.w = 90;
+        this.h = 110;
         this.dx = 0;
         this.dy = 0;
         this.dir = 1;
