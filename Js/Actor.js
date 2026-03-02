@@ -1,15 +1,12 @@
 class Actor {
     constructor(ctx) {
         this.ctx = ctx;
-        this.video = document.createElement('video');
-        this.video.src = "Images/Herorunner.MP4";
-        this.video.muted = true;
-        this.video.loop = true;
-        this.video.play();
-
+        this.img = new Image();
+        // Updated filename as per your request
+        this.img.src = "Images/Player_run.gif"; 
         this.x = 100;
-        this.y = 150;
-        this.w = 100; // Adjusted for video size
+        this.y = 100;
+        this.w = 80;
         this.h = 100;
         this.dx = 0;
         this.dy = 0;
@@ -21,9 +18,9 @@ class Actor {
         this.ctx.save();
         if (this.dir === -1) {
             this.ctx.scale(-1, 1);
-            this.ctx.drawImage(this.video, -this.x - this.w, this.y, this.w, this.h);
+            this.ctx.drawImage(this.img, -this.x - this.w, this.y, this.w, this.h);
         } else {
-            this.ctx.drawImage(this.video, this.x, this.y, this.w, this.h);
+            this.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
         }
         this.ctx.restore();
     }
