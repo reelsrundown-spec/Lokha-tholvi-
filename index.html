@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -7,10 +7,10 @@
     <style>
         body { margin: 0; overflow: hidden; background: #87CEEB; font-family: sans-serif; }
         canvas { display: block; width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; z-index: 1; }
-        #scoreBoard { position: absolute; top: 10px; right: 20px; color: white; font-size: 20px; z-index: 10; }
         #gameTitle { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.3); color: white; padding: 10px 20px; border-radius: 20px; z-index: 10; font-size: 20px; }
+        #scoreBoard { position: absolute; top: 10px; right: 20px; color: white; font-size: 20px; z-index: 10; }
         .controls { position: absolute; bottom: 30px; width: 100%; display: flex; justify-content: space-between; padding: 0 50px; box-sizing: border-box; z-index: 20; }
-        button { width: 80px; height: 80px; border-radius: 50%; border: 3px solid white; background: rgba(0,0,0,0.5); color: white; font-weight: bold; touch-action: manipulation; font-size: 14px; }
+        button { width: 80px; height: 80px; border-radius: 50%; border: 3px solid white; background: rgba(0,0,0,0.5); color: white; font-weight: bold; touch-action: manipulation; }
         #gameOver, #gameWin { display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; background: rgba(0,0,0,0.9); color: white; padding: 40px; border-radius: 20px; z-index: 100; }
     </style>
 </head>
@@ -30,12 +30,12 @@
     </div>
 
     <div id="gameOver">
-        <h1 style="font-size: 40px;">Oombikko</h1>
+        <h1>OOMBIKKO</h1>
         <button style="width: auto; height: auto; padding: 10px 20px;" onclick="location.reload()">RETRY</button>
     </div>
 
     <div id="gameWin">
-        <h1 style="font-size: 40px;">Ni Jayichu</h1>
+        <h1>NI JAYICHU</h1>
         <button style="width: auto; height: auto; padding: 10px 20px; background: #2ecc71;" onclick="location.reload()">NEXT</button>
     </div>
 
