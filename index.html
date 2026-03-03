@@ -1,51 +1,19 @@
 <!DOCTYPE html>
-<html lang="ml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ഓടെടാ മോനേ ഓട്</title>
-    <link rel="manifest" href="manifest.json">
+    <title>Runner Game</title>
     <style>
-        body { margin: 0; overflow: hidden; background: #87CEEB; font-family: sans-serif; }
+        body { margin: 0; overflow: hidden; background: #87CEEB; }
         canvas { display: block; width: 100vw; height: 100vh; }
-        #gameTitle { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); color: white; font-size: 20px; z-index: 5; background: rgba(0,0,0,0.2); padding: 5px 15px; border-radius: 20px; }
-        .controls { position: absolute; bottom: 20px; width: 100%; display: flex; justify-content: space-between; padding: 0 40px; box-sizing: border-box; z-index: 10; }
-        button { width: 70px; height: 70px; border-radius: 50%; border: 2px solid white; background: rgba(0,0,0,0.5); color: white; font-weight: bold; }
-        
-        /* Game Over & Win Screens */
-        #gameOver, #gameWin { 
-            display: none; position: absolute; top: 50%; left: 50%; 
-            transform: translate(-50%, -50%); text-align: center; 
-            background: rgba(0,0,0,0.9); color: white; padding: 40px; 
-            border-radius: 20px; z-index: 100; width: 300px;
-        }
-        .msg-btn { margin-top: 20px; padding: 10px 30px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        #scoreBoard { position: absolute; top: 10px; right: 10px; color: white; font-size: 20px; z-index: 10; }
     </style>
 </head>
 <body>
-    <div id="gameTitle">ഓടെടാ മോനേ ഓട്</div>
-    <div id="scoreBoard" style="position: absolute; top: 20px; right: 20px; color: white; z-index: 10;">Score: <span id="scoreVal">0</span></div>
-    
+    <div id="scoreBoard">Score: <span id="scoreVal">0</span></div>
     <canvas id="gameCanvas"></canvas>
-
-    <div id="gameOver">
-        <h1 style="font-size: 40px;">ഊമ്പിക്കോ</h1>
-        <button class="msg-btn" onclick="location.reload()">Retry</button>
-    </div>
-
-    <div id="gameWin">
-        <h1 style="font-size: 40px;">നീ ജയിച്ചു</h1>
-        <button class="msg-btn" style="background: #2ecc71;" onclick="location.reload()">Next Level</button>
-    </div>
-
-    <div class="controls">
-        <div style="display: flex; gap: 20px;">
-            <button id="lBtn">LEFT</button>
-            <button id="rBtn">RIGHT</button>
-        </div>
-        <button id="jBtn" style="background: #3498db;">JUMP</button>
-    </div>
-
+    
     <script src="Js/TileGround.js"></script>
     <script src="Js/Actor.js"></script>
     <script src="Js/CollisionHandler.js"></script>
