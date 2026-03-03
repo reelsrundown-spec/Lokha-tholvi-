@@ -2,18 +2,18 @@ class TileGround {
     constructor(ctx) {
         this.ctx = ctx;
         this.startTime = Date.now();
-        // Changing Y from 350 to 250 to move everything UP
+        // Moving Y from 250 to 150 to lift the whole world UP
         this.platforms = [
-            { x: 0, y: 250, w: 1000, h: 350, type: "start" },
-            { x: 1200, y: 150, w: 400, h: 40, type: "static" },
-            { x: 1800, y: 250, w: 8000, h: 350, type: "static" }
+            { x: 0, y: 150, w: 1000, h: 600, type: "start" },
+            { x: 1200, y: 100, w: 400, h: 40, type: "static" },
+            { x: 1800, y: 150, w: 8000, h: 600, type: "static" }
         ];
         this.coins = [];
         for(let i = 0; i < 60; i++) {
-            // Adjusted coin Y to match the new ground height
-            this.coins.push({ x: 500 + (i * 150), y: 180, collected: false });
+            // Coins moved to y: 80 to match character's new height
+            this.coins.push({ x: 500 + (i * 150), y: 80, collected: false });
         }
-        this.portal = { x: 7500, y: 130, w: 80, h: 120, active: false };
+        this.portal = { x: 7500, y: 50, w: 80, h: 120, active: false };
     }
 
     draw() {
