@@ -9,7 +9,6 @@ function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 }
-
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
@@ -20,8 +19,6 @@ function mainLoop() {
     if (isGameOver) return;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    // Background
     ctx.fillStyle = "#87CEEB";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -37,9 +34,9 @@ function mainLoop() {
     
     CollisionHandler.check(actor, ground);
 
-    // Coin collection
+    // Score Logic
     ground.coins.forEach(c => {
-        if (!c.collected && actor.x < c.x + 20 && actor.x + actor.w > c.x - 20 && actor.y < c.y + 40 && actor.y + actor.h > c.y - 40) {
+        if (!c.collected && actor.x < c.x + 20 && actor.x + actor.w > c.x - 20) {
             c.collected = true;
             score += 10;
             document.getElementById("scoreVal").innerText = score;
@@ -48,7 +45,6 @@ function mainLoop() {
 
     if (score >= 500) ground.portal.active = true;
 
-    // Win Logic
     if (ground.portal.active && actor.x > ground.portal.x) {
         isGameOver = true;
         document.getElementById("gameWin").style.display = "block";
@@ -56,7 +52,6 @@ function mainLoop() {
 
     ctx.restore();
 
-    // Out Logic
     if (actor.y > canvas.height) {
         isGameOver = true;
         document.getElementById("gameOver").style.display = "block";
@@ -65,7 +60,6 @@ function mainLoop() {
     requestAnimationFrame(mainLoop);
 }
 
-// Controls
 document.getElementById("lBtn").ontouchstart = (e) => { e.preventDefault(); actor.dx = -7; actor.dir = -1; };
 document.getElementById("rBtn").ontouchstart = (e) => { e.preventDefault(); actor.dx = 7; actor.dir = 1; };
 document.getElementById("lBtn").ontouchend = () => actor.dx = 0;
