@@ -34,7 +34,7 @@ function mainLoop() {
     
     CollisionHandler.check(actor, ground);
 
-    // Coin Logic
+    // Score Logic
     ground.coins.forEach(c => {
         if (!c.collected && actor.x < c.x + 20 && actor.x + actor.w > c.x - 20) {
             c.collected = true;
@@ -47,8 +47,8 @@ function mainLoop() {
 
     ctx.restore();
 
-    // FIXED: Only trigger Game Over if player falls 200px below the canvas
-    if (actor.y > canvas.height + 200) {
+    // FIXED: Only trigger Game Over if player falls 300px below the canvas
+    if (actor.y > canvas.height + 300) {
         isGameOver = true;
         document.getElementById("gameOver").style.display = "block";
     }
@@ -56,7 +56,7 @@ function mainLoop() {
     requestAnimationFrame(mainLoop);
 }
 
-// Touch Controls
+// Controls
 document.getElementById("lBtn").ontouchstart = (e) => { e.preventDefault(); actor.dx = -7; actor.dir = -1; };
 document.getElementById("rBtn").ontouchstart = (e) => { e.preventDefault(); actor.dx = 7; actor.dir = 1; };
 document.getElementById("lBtn").ontouchend = () => actor.dx = 0;
