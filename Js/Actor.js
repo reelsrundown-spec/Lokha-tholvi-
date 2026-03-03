@@ -4,30 +4,30 @@ class Actor {
         this.img = new Image();
         this.img.src = "Images/player_run.gif"; 
         this.x = 100;
-        this.y = 350; // ഹീറോയെ തറയിൽ നിർത്താൻ ഇത് സഹായിക്കും
+        this.y = 50; // Starting position above the ground
         this.w = 90;
         this.h = 110;
         this.dx = 0;
         this.dy = 0;
-        this.dir = 1;
         this.onGround = false;
+        this.loaded = false;
+        this.img.onload = () => { this.loaded = true; };
     }
 
     draw() {
-        this.ctx.save();
-        if (this.dir === -1) {
-            this.ctx.scale(-1, 1);
-            this.ctx.drawImage(this.img, -this.x - this.w, this.y, this.w, this.h);
-        } else {
+        if (this.loaded) {
             this.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+        } else {
+            this.ctx.fillStyle = "blue";
+            this.ctx.fillRect(this.x, this.y, this.w, this.h);
         }
-        this.ctx.restore();
     }
 
     update() {
-        this.dy += 0.8;
-        this.x += this.dx;
+        this.dy += 0.8; // Gravity constant
         this.y += this.dy;
+        this.x += this.dx;
+        
         if (this.x < 0) this.x = 0;
     }
 }
