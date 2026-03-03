@@ -4,7 +4,7 @@ class Actor {
         this.img = new Image();
         this.img.src = "Images/player_run.gif"; 
         this.x = 100;
-        this.y = 50; // Starting position above the ground
+        this.y = 50; // High enough to fall onto the platform
         this.w = 90;
         this.h = 110;
         this.dx = 0;
@@ -24,10 +24,9 @@ class Actor {
     }
 
     update() {
-        this.dy += 0.8; // Gravity constant
+        this.dy += 0.8; 
         this.y += this.dy;
         this.x += this.dx;
-        
         if (this.x < 0) this.x = 0;
     }
 }
