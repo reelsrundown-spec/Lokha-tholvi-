@@ -1,19 +1,18 @@
 class CollisionHandler {
-    static check(player, ground) {
-        player.onGround = false;
-        
+    static check(actor, ground) {
+        actor.onGround = false;
+
         ground.platforms.forEach(p => {
-            // Check if ninja is falling and is within the horizontal range of the platform
-            if (player.dy >= 0 &&
-                player.x + (player.w * 0.2) < p.x + p.w &&
-                player.x + (player.w * 0.8) > p.x &&
-                player.y + player.h > p.y &&
-                player.y + player.h < p.y + 40) {
+            if (actor.x + actor.w * 0.8 > p.x && 
+                actor.x + actor.w * 0.2 < p.x + p.w && 
+                actor.y + actor.h > p.y && 
+                actor.y + actor.h < p.y + p.h + 10) {
                 
-                // Stop the ninja on top of the platform
-                player.y = p.y - player.h;
-                player.dy = 0;
-                player.onGround = true;
+                if (actor.dy >= 0) {
+                    actor.y = p.y - actor.h;
+                    actor.dy = 0;
+                    actor.onGround = true;
+                }
             }
         });
     }
