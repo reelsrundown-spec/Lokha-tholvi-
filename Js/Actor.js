@@ -4,7 +4,7 @@ class Actor {
         this.img = new Image();
         this.img.src = "Images/player_run.gif"; 
         this.x = 100;
-        this.y = 100;
+        this.y = 250; 
         this.w = 90;
         this.h = 110;
         this.dx = 0;
@@ -14,14 +14,16 @@ class Actor {
     }
 
     draw() {
-        this.ctx.save();
-        if (this.dir === -1) {
-            this.ctx.scale(-1, 1);
-            this.ctx.drawImage(this.img, -this.x - this.w, this.y, this.w, this.h);
-        } else {
-            this.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+        if (this.img.complete) {
+            this.ctx.save();
+            if (this.dir === -1) {
+                this.ctx.scale(-1, 1);
+                this.ctx.drawImage(this.img, -this.x - this.w, this.y, this.w, this.h);
+            } else {
+                this.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+            }
+            this.ctx.restore();
         }
-        this.ctx.restore();
     }
 
     update() {
